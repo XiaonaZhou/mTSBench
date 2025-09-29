@@ -45,35 +45,25 @@ series anomaly detection. It includes
 
 <h3 id="mts">💻 Installation</h3>
 
-**Step 1:** Clone this repository using `git` and change into its root directory.
 
-```bash
-git clone https://github.com/PLAN-Lab/mTSBench.git
-```
-
-**Step 2:** Create and activate a `conda` environment named `mTSB`.
+**Step 1:** Create and activate a `conda` environment named `mTSB`.
 
 ```bash
 conda create -n mTSB python=3.11   
 conda activate mTSB
 ```
 
-**Step 3:** Install the dependencies from requirements.txt:
+**Step 2:** Install the dependencies from requirements.txt:
 ```bash
 pip install -r requirements.txt
 ```
 
 <h3 id="dataset">🗄️ Dataset</h3>
 
-To download the full dataset:
+<h3 id="dataset">🗄️ Dataset</h3>
 
-```bash
-git lfs install
-cd Datasets
-git clone https://huggingface.co/datasets/PLAN-Lab/mTSBench
-```
+Due to the size of the full dataset, we only include a few example time series in this repo (see folder `Dataset`). The full dataset will be provided upon acceptance of the paper.
 
-To use part of data, check under `Datasets` folder for instructions. 
 
 <h3 id="detector">🔍 Anomaly Detectors</h3>
 
@@ -91,16 +81,8 @@ from Detectors.evaluation.metrics import get_metrics
 from filelock import FileLock
 from datasets import load_dataset
 
-# Load just the CalIt2 dataset
-data_name = "CalIt2"
-calit2 = load_dataset("PLAN-Lab/mTSBench", data_dir=data_name)
-# Convert to pandas
-df = calit2["test"].to_pandas()
-
-### Alternatively, if the above does not work, using exact path
-# url = "https://huggingface.co/datasets/PLAN-Lab/mTSBench/resolve/main/MSL/MSL_T-13_val.csv"
-# df = pd.read_csv(url)
-
+# Load the CalIt2 dataset
+df = pd.read_csv("Datasets/mTSBench/CalIt2/CalIt2_traffic_test.csv")
 
 # using KMeansAD
 detector = 'KMeansAD'
@@ -238,8 +220,6 @@ The original implementation of Orthus is in R. While we do plan to provide a Pyt
 
 
 
-
-Or describe it in Issues.
 
 ### 🎉 Acknowledgement
 We appreciate the following github repos a lot for their valuable code base:
