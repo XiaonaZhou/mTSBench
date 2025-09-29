@@ -60,8 +60,6 @@ pip install -r requirements.txt
 
 <h3 id="dataset">🗄️ Dataset</h3>
 
-<h3 id="dataset">🗄️ Dataset</h3>
-
 Due to the size of the full dataset, we only include a few example time series in this repo (see folder `Dataset`). The full dataset will be provided upon acceptance of the paper.
 
 
