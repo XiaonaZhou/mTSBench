@@ -5,44 +5,6 @@
 
 **mTSBench** contains a collection of 344 multivariate time series from 19 datasets commonly used in anomaly detection research. Each subfolder corresponds to a specific dataset (e.g., `MSL`, `SMAP`, `CalIt2`), and contains `.csv` files such as `*_train.csv`, `*_test.csv`, and `*_val.csv`. Check `data_summary.csv` for details on each time series. 
 
----
-
-## 📥 How to Download
-
-To download this dataset locally, follow the steps below. This repository uses [Git LFS (Large File Storage)](https://git-lfs.github.com/) to handle large `.csv` files.
-
-### 1. Install Git LFS
-
-If you don't have Git LFS installed, run:
-
-```bash
-brew install git-lfs           # macOS (Homebrew)
-sudo apt-get install git-lfs   # Debian/Ubuntu
-choco install git-lfs          # Windows (Chocolatey)
-```
-
-### 2. Download the entire dataset folder
-
-```bash
-git lfs install
-git clone https://huggingface.co/datasets/PLAN-Lab/mTSBench
-```
-
-### 3. Accessing data through Huggingface
-
-If you only want to test with some of the time series, use the following code. 
-
-```python
-from datasets import load_dataset
-
-# Load just the CalIt2 dataset
-calit2 = load_dataset("PLAN-Lab/mTSBench", data_dir="CalIt2")
-
-# Convert to pandas
-df_train = calit2["train"].to_pandas()
-df_test = calit2["test"].to_pandas()
-```
-
 
 ### Overview of Multivariate Time-Series Datasets, details in `data_summary.csv`
 
