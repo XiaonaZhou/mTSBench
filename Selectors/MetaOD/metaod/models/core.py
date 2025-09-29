@@ -26,7 +26,7 @@ def sigmoid(x, a=1):
 def sigmoid_derivate(x, a=1):
     return sigmoid(x, a) * (1 - sigmoid(x, a))
 
-#Xiaona: safe sigmoid 
+#  safe sigmoid 
 # def sigmoid(x, a=1):
 #     if x >= 0:
 #         z = np.exp(-a * x)
@@ -90,7 +90,7 @@ class MetaODClass(object):
             self.n_samples, self.n_models = self.ratings.shape[0], \
                                             self.ratings.shape[1]
         self._v = verbose
-        # Xiaona: Should not assign loss to 0 
+        #   Should not assign loss to 0 
         # self.train_loss_ = [0]
         # self.valid_loss_ = [0]
         self.train_loss_ = [1e-8] 
@@ -389,7 +389,7 @@ class MetaODClass(object):
 # from sklearn.preprocessing import MinMaxScaler, StandardScaler
 # from copy import deepcopy
 
-# # Xiaona: define safe-sigmoid because 
+# #   define safe-sigmoid because 
 # # RuntimeWarning: overflow encountered in exp
 # #   return 1 / (1 + np.exp(-1 * a * x))
 # def safe_sigmoid(x, a=1):

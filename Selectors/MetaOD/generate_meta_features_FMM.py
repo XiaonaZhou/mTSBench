@@ -34,7 +34,7 @@ print("roc_mat_red ", roc_mat_red.shape)
 n_datasets, n_configs = roc_mat_red.shape[0], roc_mat_red.shape[1]
 print("n_datasets, n_configs ", n_datasets, n_configs)
 data_headers = roc_mat[:, 0]
-print("data_headers ") #Xiaona: There are only 93 datasets, it was suppose to be 124, check what happended, 
+print("data_headers ") #  There are only 93 datasets, it was suppose to be 124, check what happended, 
                         #some did not make it because there were no anomalies in the valid or test set after split
 print(data_headers)
 print("len(data_headers) ", len(data_headers))
@@ -50,17 +50,17 @@ meta_csv = np.zeros([len(data_headers), 200])
 # read in csv files
 csv_file_list = data_headers
 
-# Xiaona: to generate meta-features, the data must have at least three columns, so changed the code
+#   to generate meta-features, the data must have at least three columns, so changed the code
 for j in range(len(csv_file_list)):
     csv_file = csv_file_list[j]
-    csv_file = csv_file.split('.')[0] #Xiaona: enable more data to be used for meta-features
+    csv_file = csv_file.split('.')[0] #  enable more data to be used for meta-features
                                       # the detector are tesed on validation set. 
                                       # we include the train data for a better capturing of the features
     X = pd.read_csv(os.path.join("../Datasets", 'mTSBench', csv_file.split('_')[0],csv_file + '_train.csv'))
     X = X.iloc[:, 1:-1]
     print(X.shape)
 
-    #Xiaona: try transform X to range[0,1]
+    #  try transform X to range[0,1]
     meta_scalar = MinMaxScaler()
     X_transformed = meta_scalar.fit_transform(X)
 

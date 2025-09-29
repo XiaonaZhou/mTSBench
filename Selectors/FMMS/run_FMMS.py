@@ -63,8 +63,6 @@ def Train(params, train_params, xtrain, xvalid, xtest, ytrain, yvalid, ytest, tx
         loss_train = train_params['loss'](ytrainpred, ytrain)
         ytrainpred = ytrainpred.detach().numpy()
         train_rank, _ = evaluation.ERank(ytrainpred, ytrain)
-        # Xiaona: we want to get the top 9 since we have 9 models 
-        #train_topn, _ = evaluation.ETopnk(ytrainpred, ytrain, int(config.modelnum*0.05), 5)
         train_topn, _ = evaluation.ETopnk(ytrainpred, ytrain, 9, 5)
         loss_train_set.append(loss_train.item())
         ETopn_train.append(train_rank)
@@ -75,8 +73,7 @@ def Train(params, train_params, xtrain, xvalid, xtest, ytrain, yvalid, ytest, tx
         loss_valid = train_params['loss'](yvalidpred, yvalid)
         yvalidpred = yvalidpred.detach().numpy()
         valid_rank, _ = evaluation.ERank(yvalidpred, yvalid)
-        # Xiaona: we want to get the top 9 since we have 9 models
-        #valid_topn, _ = evaluation.ETopnk(yvalidpred, yvalid, int(config.modelnum*0.05), 5)
+
         valid_topn, _ = evaluation.ETopnk(yvalidpred, yvalid, 9, 5)
         loss_valid_set.append(loss_valid.item())
         ETopn_valid.append(valid_rank)
@@ -87,7 +84,7 @@ def Train(params, train_params, xtrain, xvalid, xtest, ytrain, yvalid, ytest, tx
         loss_test = train_params['loss'](ytestpred, ytest)
         ytestpred = ytestpred.detach().numpy()
         test_rank, _ = evaluation.ERank(ytestpred, ytest)
-        # Xiaona: we want to get the top 9 since we have 9 models
+        #   we want to get the top 9 since we have 9 models
         #test_topn, _ = evaluation.ETopnk(ytestpred, ytest, int(config.modelnum*0.05), 5)
         test_topn, _ = evaluation.ETopnk(ytestpred, ytest, 9, 5)
         loss_test_set.append(loss_test.item())

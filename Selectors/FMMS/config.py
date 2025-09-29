@@ -1,7 +1,7 @@
 import os
 import torch
 import utils
-# Xiaona 
+
 dataset = 'ts'#'pmf'
 random_state = 0
 modelnum = 200

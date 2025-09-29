@@ -308,7 +308,7 @@ def generate_meta_features(X):
     meta_vec_names.extend(list_process_name('anova_p_value'))
 
     # pca
-    # Xiaona: we have data with fewer than 3 features, edit to make it more flexible
+    #   we have data with fewer than 3 features, edit to make it more flexible
     n_features = X.shape[1]
     print("++++++++++++++++++++++++++++++++++++++")
     print("n_features")
